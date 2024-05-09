@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'corsheaders',
     'apps.users',
     'apps.products',
 ]
@@ -36,6 +37,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -71,14 +73,13 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mysql',          # Replace with your database name
-        'USER': 'mysql',              # Replace with your database username
+        'NAME': 'mysql',  # Replace with your database name
+        'USER': 'mysql',  # Replace with your database username
         'PASSWORD': 'mysql',  # Replace with your database password
-        'HOST': '127.0.0.1',           # If MySQL is running on the same machine
-        'PORT': '3306',                # Port mapped to the MySQL container
+        'HOST': '127.0.0.1',  # If MySQL is running on the same machine
+        'PORT': '3306',  # Port mapped to the MySQL container
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -122,6 +123,5 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'compressor.finders.CompressorFinder',
 )
-
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
